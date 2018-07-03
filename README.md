@@ -5,13 +5,13 @@
 
 RICPA client, client for Remote Chess Engine, implemented following RICPA protocol
 
-Install
--------
-> npm install ricpa-client --save
+## Install
+```
+npm install ricpa-client --save
+```
 
-Examples of usage
--------
+## Examples of usage
 ```javascript
 const Client = require('ricpa-client');
-const client = new Client('http://host:port/api');
+const client = new Client('http://hostname:port/api');
 ```
