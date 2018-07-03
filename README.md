@@ -11,5 +11,7 @@ Install
 
 Examples of usage
 -------
-> const Client = require('ricpa-client');
-> const client = new Client('http://host:port/api');
+```javascript
+const Client = require('ricpa-client');
+const client = new Client('http://host:port/api');
+```
