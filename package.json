@@ -1,0 +1,32 @@
+{
+  "name": "ricpa-client",
+  "version": "0.1.0",
+  "description": "RICPA Client, client for Remote Chess Engine, implemented following RICPA protocol",
+  "main": "client.js",
+  "scripts": {
+    "test": "jasmine",
+    "tdd": "nodemon --exec jasmine",
+    "coverage": "istanbul cover node_modules/jasmine/bin/jasmine.js",
+    "e2e": "jasmine ./spec/e2e.js"
+  },
+  "keywords": [
+    "chess",
+    "chess engine",
+    "engine",
+    "RICPA",
+    "client",
+    "remote chess engine",
+    "uci alternative"
+  ],
+  "author": "Mikhail Subach",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "jasmine": "^3.1.0",
+    "nodemon": "^1.17.5"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/Scorpibear/ricpa-client"
+  }
+}
