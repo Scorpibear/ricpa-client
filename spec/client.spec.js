@@ -1,4 +1,4 @@
-const http = require('http');
+const nock = require('nock');
 
 const Client = require('../client');
 
@@ -13,14 +13,23 @@ describe('client', () => {
     expect(client).not.toBeNull();
   });
   describe('POST /fen', () => {
-    it('executes http request', () => {
-      spyOn(http, 'request').and.stub();
-      client.postFen(fen, 40);
-      expect(http.request).toHaveBeenCalledWith({
-        method: 'POST', hostname: 'ricpa.host.com', port: 9977, path: '/api/fen'}, jasmine.anything());
+    beforeEach(() => {
+      nock('http://ricpa.host.com:9977')
+        .post('/api/fen')
+        .reply(200, {placeInQueue: 4, estimatedTime: '0:12:23'});
+    })
+    it('executes http request', async () => {
+      return client.postFen(fen, 40).then(response => {
+        expect(typeof response).toBe('object');
+      })
     });
     it('sends fen, depth and ping url');
-    it('returns place in queue starting from 0 and estimated time to analyze ({placeInQueue, estimatedTime})');
+    /*it('returns placeInQueue from 0', async () => {
+      spyOn(http, 'request').and.stub();
+      const {placeInQueue} = await client.postFen(fen, 40);
+      expect(placeInQueue).toBe(0);
+    });*/
+    it('returns estimatedTime to analyze as H:mm:ss');
   });
   describe('GET /fen', () => {
     it('Returns bestMove for this fen and depth or placeInQueue and estimatedTime when answer could be provided');

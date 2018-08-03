@@ -1,21 +1,18 @@
-const http = require('http');
+const axios = require('axios');
 
 class Client {
-  constructor({hostname, port = 9977, path = '/api'}) {
+  constructor({hostname, port = 9977, path = '/api', protocol = 'http'}) {
     this.config = {};
     this.config.hostname = hostname;
     this.config.port = port;
     this.config.path = path;
+    this.config.fullpath = `${protocol}://${hostname}:${port}${path}`;
   }
   postFen() {
-    http.request( {
-      method: 'POST',
-      hostname: this.config.hostname,
-      port: this.config.port,
-      path: this.config.path + '/fen'
-    }, response => {
-
-    });
+    return axios
+      .post(this.config.fullpath + '/fen')
+      .then(res => res.data)
+      .catch(error => console.error(error));
   }
 }
 
