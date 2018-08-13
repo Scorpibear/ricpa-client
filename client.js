@@ -8,9 +8,30 @@ class Client {
     this.config.path = path;
     this.config.fullpath = `${protocol}://${hostname}:${port}${path}`;
   }
-  postFen() {
+  deleteFen(fen) {
     return axios
-      .post(this.config.fullpath + '/fen')
+      .delete(this.config.fullpath + '/fen', {params: {fen}})
+      .then(res => true)
+      .catch(error => console.error(error))
+  }
+  getFen({fen, depth}) {
+    return axios
+      .get(this.config.fullpath + '/fen', {params: {fen, depth}})
+      .then(res =>
+        ({bestMove: res.data.bestMove,
+          placeInQueue: res.data.placeInQueue,
+          estimatedTime: res.data.estimatedTime}))
+      .catch(error => console.error(error));
+  }
+  getQueue() {
+    return axios
+      .get(this.config.fullpath + '/queue')
+      .then(res => res.data)
+      .catch(error => console.error(error));
+  }
+  postFen({fen, depth, pingUrl}) {
+    return axios
+      .post(this.config.fullpath + '/fen', {fen, depth, pingUrl})
       .then(res => res.data)
       .catch(error => console.error(error));
   }
