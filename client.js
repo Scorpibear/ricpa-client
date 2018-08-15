@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 class Client {
-  constructor({hostname, port = 9977, path = '/api', protocol = 'http'}) {
+  constructor({hostname, port = 9977, path = '', protocol = 'http'}) {
     this.config = {};
     this.config.hostname = hostname;
     this.config.port = port;
