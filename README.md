@@ -14,4 +14,7 @@ npm install ricpa-client --save
 ```javascript
 const Client = require('ricpa-client');
 const client = new Client('http://hostname:port/api');
+const itemList = client.getQueue();
+client.postFen({fen, depth});
+const {fen, depth, bestMove, score, placeInQueue, estimatedTime} = client.getFen({fen, depth});
 ```

@@ -1,6 +1,6 @@
 {
   "name": "ricpa-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "RICPA Client, client for Remote Chess Engine, implemented following RICPA protocol",
   "main": "client.js",
   "scripts": {

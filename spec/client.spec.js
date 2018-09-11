@@ -70,7 +70,9 @@ describe('client', () => {
         .query({fen, depth: 12})
         .reply(200, sentResult);
       const result = await client.getFen({fen, depth: 12});
-      expect(result).toEqual(sentResult);
+      expect(result.bestMove).toBeUndefined();
+      expect(result.placeInQueue).toBeUndefined();
+      expect(result.estimatedTime).toBeUndefined();
     });
   });
   describe('DELETE /fen', () => {

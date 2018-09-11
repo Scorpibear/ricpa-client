@@ -18,9 +18,13 @@ class Client {
     return axios
       .get(this.config.fullpath + '/fen', {params: {fen, depth}})
       .then(res =>
-        ({bestMove: res.data.bestMove,
+        ({
+          fen, depth,
+          bestMove: res.data.bestMove,
+          score: res.data.score,
           placeInQueue: res.data.placeInQueue,
-          estimatedTime: res.data.estimatedTime}))
+          estimatedTime: res.data.estimatedTime
+        }))
       .catch(error => console.error(error));
   }
   getQueue() {
