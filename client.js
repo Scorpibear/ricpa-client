@@ -1,5 +1,7 @@
 const axios = require('axios');
 
+const errorHandler = error => console.error(error.message);
+
 class Client {
   constructor({hostname, port = 9977, path = '', protocol = 'http'}) {
     this.config = {};
@@ -12,7 +14,7 @@ class Client {
     return axios
       .delete(this.config.fullpath + '/fen', {params: {fen}})
       .then(res => true)
-      .catch(error => console.error(error))
+      .catch(errorHandler)
   }
   getFen({fen, depth}) {
     return axios
@@ -25,19 +27,19 @@ class Client {
           placeInQueue: res.data.placeInQueue,
           estimatedTime: res.data.estimatedTime
         }))
-      .catch(error => console.error(error));
+      .catch(errorHandler)
   }
   getQueue() {
     return axios
       .get(this.config.fullpath + '/queue')
       .then(res => res.data)
-      .catch(error => console.error(error));
+      .catch(errorHandler)
   }
   postFen({fen, depth, pingUrl}) {
     return axios
       .post(this.config.fullpath + '/fen', {fen, depth, pingUrl})
       .then(res => res.data)
-      .catch(error => console.error(error));
+      .catch(errorHandler)
   }
 }
 
