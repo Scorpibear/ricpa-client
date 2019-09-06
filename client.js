@@ -9,15 +9,16 @@ class Client {
     this.config.port = port;
     this.config.path = path;
     this.config.fullpath = `${protocol}://${hostname}:${port}${path}`;
+    this.requestPromise = Promise.resolve();
   }
   deleteFen(fen) {
-    return axios
+    return this.requestPromise = this.requestPromise.then(() => axios
       .delete(this.config.fullpath + '/fen', {params: {fen}})
       .then(res => true)
-      .catch(errorHandler)
+      .catch(errorHandler));
   }
   getFen({fen, depth}) {
-    return axios
+    return this.requestPromise = this.requestPromise.then(() => axios
       .get(this.config.fullpath + '/fen', {params: {fen, depth}})
       .then(res =>
         ({
@@ -27,19 +28,19 @@ class Client {
           placeInQueue: res.data.placeInQueue,
           estimatedTime: res.data.estimatedTime
         }))
-      .catch(errorHandler)
+      .catch(errorHandler))
   }
   getQueue() {
-    return axios
+    return this.requestPromise = this.requestPromise.then(() => axios
       .get(this.config.fullpath + '/queue')
       .then(res => res.data)
-      .catch(errorHandler)
+      .catch(errorHandler))
   }
   postFen({fen, depth, pingUrl}) {
-    return axios
+    return this.requestPromise = this.requestPromise.then(() => axios
       .post(this.config.fullpath + '/fen', {fen, depth, pingUrl})
       .then(res => res.data)
-      .catch(errorHandler)
+      .catch(errorHandler))
   }
 }
 
