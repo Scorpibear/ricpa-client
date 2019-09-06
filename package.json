@@ -22,15 +22,15 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "istanbul": "^0.4.5",
-    "jasmine": "^3.1.0",
-    "nock": "^9.4.4",
-    "nodemon": "^1.17.5"
+    "jasmine": "^3.4.0",
+    "nock": "^9.6.1",
+    "nodemon": "^1.19.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Scorpibear/ricpa-client"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.19.0"
   }
 }
