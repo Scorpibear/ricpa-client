@@ -1,6 +1,6 @@
 {
   "name": "ricpa-client",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "RICPA Client, client for Remote Chess Engine, implemented following RICPA protocol",
   "main": "client.js",
   "scripts": {
@@ -22,9 +22,9 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "istanbul": "^0.4.5",
-    "jasmine": "^3.4.0",
+    "jasmine": "^3.7.0",
     "nock": "^9.6.1",
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.4"
   },
   "repository": {
     "type": "git",
